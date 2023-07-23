@@ -40,7 +40,7 @@ exports.createOrder = async (req, res) => {
 exports.updateOrder = async (req, res) => {
     try {
         
-        const { orderId } = req.params.orderId;
+        const { orderId } = req.params;
         const { payload } = req.body;
         if(!orderId) {
             return res.status(400).json("Order ID can't be null");
@@ -66,7 +66,7 @@ exports.updateOrder = async (req, res) => {
                        );
      
         
-        return res.status(201).json(result);     
+        return res.status(202).json(result);     
     } catch(error) {
         return res.status(500).json(getErrorResponse(error));
     }

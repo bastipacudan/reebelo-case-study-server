@@ -19,7 +19,7 @@ exports.createProduct = async (req, res) => {
 
 exports.updateProduct = async (req, res) => {
     try {
-        const productId = req.params.productId;
+        const { productId } = req.params;
         const { payload } = req.body;
 
         if(!productId) {
@@ -33,7 +33,7 @@ exports.updateProduct = async (req, res) => {
         const { name, description, quantity, price, image} = payload;
         const result = await dbManager.query(queryType.product.UPDATE_PRODUCT, productId, name, description, quantity, price, image)
         
-        return res.status(201).json(result);     
+        return res.status(202).json(result);     
     } catch(error) {
        return res.status(500).json(getErrorResponse(error));
     }

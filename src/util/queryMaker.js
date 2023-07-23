@@ -45,8 +45,9 @@ function makeQuery(type, values) {
             return querySeparator(query, values);
         }
         case queryType.order.UPDATE_ORDER: {
-            const query = `UPDATE "order" SET "product_id" = $2, "quantity" = 3, "shipping_address" = $4, "total" = $5, "tracking_company" = $6, "tracking_number" = $7, "status" = $8
-                            WHERE id = $1`;
+            const query = `UPDATE "order" SET "product_id" = $2, "quantity" = $3, "shipping_address" = $4, "total" = $5, "tracking_company" = $6, "tracking_number" = $7, "status" = $8, "order_date" = $9, "date_updated" = $10
+                            WHERE id = $1
+                            returning *`;
 
             return querySeparator(query, values);
         }
